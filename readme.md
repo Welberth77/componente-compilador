@@ -1,79 +1,114 @@
 # Gerenciador de Tabela de Símbolos
 
-Projeto da disciplina de **Construção de Compiladores** — Opção 2.
+Análise Semântica e Escopos Aninhados | Projeto Prático
 
-Implementa uma **Tabela de Símbolos** que gerencia **escopos aninhados**
-(*nested scopes*) usando uma **Pilha (Stack)** de **Hash Maps**. Cada escopo
-é um Hash Map (dicionário) que mapeia o nome de uma variável ao seu tipo, e a
-Pilha controla qual é o escopo atual.
+![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
+![Repo Size](https://img.shields.io/github/repo-size/seu-usuario/gerenciador-tabela-simbolos)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-Métodos exigidos pelo enunciado:
+Projeto desenvolvido para a disciplina de **Construção de Compiladores (Opção 2)**. 
 
-- `declarar(variavel, tipo)` — registra uma variável no escopo atual.
-- `buscar(variavel)` — procura uma variável do escopo mais interno para o mais
-  externo (regra de resolução de nomes de um compilador).
+O sistema implementa uma **Tabela de Símbolos** eficiente para gerenciar **escopos aninhados** (*nested scopes*) utilizando uma estrutura de **Pilha (Stack)** preenchida por **Hash Maps** (dicionários do Python). Cada escopo ativo funciona como um mapa local isolado, permitindo a resolução de nomes de variáveis da maneira exata que um compilador real faz.
 
-## Requisitos
+---
 
-- **Python 3.8 ou superior** (não usa nenhuma biblioteca externa).
+## 🛠️ Métodos Implementados
+
+De acordo com as especificações do enunciado, o núcleo do sistema expõe:
+* `declarar(variavel, tipo)`: Registra uma nova variável com seu tipo correspondente no escopo atual (topo da pilha).
+* `buscar(variavel)`: Procura por uma variável realizando uma busca linear de cima para baixo na pilha (do escopo mais interno/recente até o escopo global).
+
+---
+
+##  Estrutura do Projeto
+
+O desenvolvimento foi feito de forma modular e distribuído entre a equipe:
+
+```text
+gerenciador-tabela-simbolos/
+├── erros.py                # Exceções personalizadas para erros semânticos
+├── escopo.py               # Classe Escopo (Encapsula 1 Hash Map)
+├── tabela_de_simbolos.py   # Gerenciamento da Pilha de escopos e métodos de busca
+├── main.py                 # Rotina de disposição e cenários de teste
+├── README.md               # Documentação principal do projeto
+└── Relatorio_Tecnico.pdf   # Relatório de fundamentação teórica
+```
+
+### Divisão de Responsabilidades
+
+| Módulo | Responsabilidade | Estrutura de Dados | Integrante |
+| :--- | :--- | :--- | :--- |
+| `erros.py` / `escopo.py` | Definição de exceções e escopo individual | **Hash Map** (Dicionário) | Welbert Costa |
+| `tabela_de_simbolos.py` | Empilhamento/desempilhamento e resolução | **Pilha (Stack)** de escopos | Igor Rafael |
+| `main.py` / Docs | Criação dos cenários de teste e relatórios | — | Danilo Lima |
+
+---
+
+##  Como Executar
+
+### Pré-requisitos
+Certifique-se de possuir o **Python 3.8 ou superior** instalado na sua máquina. O projeto foi construído utilizando exclusivamente a biblioteca padrão do ecossistema Python (zero dependências externas).
 
 ```bash
 python3 --version
 ```
 
-## Como executar
-
-A partir da pasta raiz do projeto, rode **exatamente**:
+### Inicializando a Demonstração
+A partir do diretório raiz do projeto, execute o arquivo principal:
 
 ```bash
 python3 main.py
 ```
 
-> No Windows, caso o comando acima não funcione, use:
->
-> ```bash
-> python main.py
-> ```
+*Caso esteja utilizando ambiente Windows e ocorra algum problema com o comando acima, tente:*
 
-O programa executa uma demonstração automática com 6 casos de teste e imprime,
-passo a passo, cada operação (entrada/saída de escopo, declaração e busca).
-
-## Estrutura do projeto (organização modular)
-
-```
-gerenciador-tabela-simbolos/
-├── erros.py                # Erro semântico            (Pessoa 1)
-├── escopo.py               # Classe Escopo = 1 Hash Map (Pessoa 1)
-├── tabela_de_simbolos.py   # Pilha de escopos + métodos (Pessoa 2)
-├── main.py                 # Demonstração / casos de teste (Pessoa 3)
-├── README.md               # Este arquivo                (Pessoa 3)
-└── Relatorio_Tecnico.pdf   # Relatório técnico           (Pessoa 3)
+```bash
+python main.py
 ```
 
-| Módulo | Responsabilidade | Estrutura de dados |
-|--------|------------------|--------------------|
-| `escopo.py` | Um escopo individual | **Hash Map** (dicionário) |
-| `tabela_de_simbolos.py` | Empilhar/desempilhar escopos e resolver nomes | **Pilha (Stack)** de escopos |
-| `main.py` | Exercitar o sistema com casos de teste | — |
+---
 
-## Como usar como biblioteca
+##  Casos de Teste Cobertos
+
+Ao rodar o arquivo `main.py`, a aplicação simula uma rotina real de compilação passando por 6 cenários críticos:
+* **Declarações Globais**: Inserção e busca de variáveis no escopo raiz do programa.
+* **Escopos Aninhados**: Criação de um novo escopo (simulando uma função) com busca retroativa de variáveis globais.
+* **Shadowing**: Verificação do sombreamento de variáveis, onde uma variável local temporariamente oculta uma global de mesmo nome.
+* **Saída de Escopo**: Destruição do escopo local após a saída de um bloco e validação de que as variáveis internas tornaram-se inacessíveis.
+* **Erro Semântico (Redeclaração)**: Tratamento de erro disparado ao tentar declarar duas variáveis idênticas no mesmo nível de escopo.
+* **Variável Inexistente**: Resposta padrão do sistema ao tentar buscar um identificador que nunca foi definido.
+
+---
+
+##  Exemplo Prático de Uso
+
+Caso queira utilizar o gerenciador como um módulo em outros arquivos do seu projeto:
 
 ```python
 from tabela_de_simbolos import TabelaDeSimbolos
 
-tabela = TabelaDeSimbolos()      # já abre o escopo global
+# Inicializa a tabela (o escopo global é aberto automaticamente)
+tabela = TabelaDeSimbolos()
 tabela.declarar("contador", "int")
 
-tabela.entrar_escopo("loop")     # abre um escopo aninhado
+# Entra em um bloco/escopo aninhado
+tabela.entrar_escopo("loop_for")
 tabela.declarar("i", "int")
-print(tabela.buscar("contador")) # -> "int" (vem do escopo externo)
-tabela.sair_escopo()             # fecha o escopo "loop"
 
-print(tabela.buscar("i"))        # -> None (já saiu do escopo)
+# Acessa variável do escopo pai (Global) normalmente
+print(tabela.buscar("contador"))  # Saída: "int"
+
+# Finaliza o bloco atual e desempilha o escopo
+tabela.sair_escopo()
+
+# Tentar acessar a variável local do bloco agora retornará None
+print(tabela.buscar("i"))  # Saída: None
 ```
 
-## Autores
+---
 
-- Pessoa 1 — _(Welbert de Oliveira Costa / 1231525468)_
-- Pessoa 2 — _(Igor Rafael Basilio de Lima / 1231527762)_
-- Pessoa 3 — _(Danilo Vitor Firmino Lima / 1231522159)_
+## 👥 Autores
+
+* **Welbert de Oliveira Costa** — Desenvolvimento das estruturas base (`escopo.py` e `erros.py`).
+* **Igor Rafael Basilio de Lima** — Desenvolvimento do motor da tabela (`tabela_de_simbolos.py`).
+* **Danilo Vitor Firmino Lima** — Casos de teste, validação e documentação (`main.py` e relatórios).
