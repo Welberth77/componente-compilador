@@ -10,7 +10,7 @@ O sistema implementa uma **Tabela de Símbolos** eficiente para gerenciar **esco
 
 ---
 
-## 🛠️ Métodos Implementados
+##  Métodos Implementados
 
 De acordo com as especificações do enunciado, o núcleo do sistema expõe:
 * `declarar(variavel, tipo)`: Registra uma nova variável com seu tipo correspondente no escopo atual (topo da pilha).
