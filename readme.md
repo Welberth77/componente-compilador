@@ -74,6 +74,6 @@ print(tabela.buscar("i"))        # -> None (já saiu do escopo)
 
 ## Autores
 
-- Pesso 1 — _(Welbert de Oliveira Costa / 1231525468)_
-- Aluno 2 — _(Igor Rafael Basilio de Lima / 1231527762)_
-- Aluno 3 — _(Danilo Vitor Firmino Lima / 1231522159)_
+- Pessoa 1 — _(Welbert de Oliveira Costa / 1231525468)_
+- Pessoa 2 — _(Igor Rafael Basilio de Lima / 1231527762)_
+- Pessoa 3 — _(Danilo Vitor Firmino Lima / 1231522159)_
