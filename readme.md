@@ -4,15 +4,13 @@ Análise Semântica e Escopos Aninhados | Projeto Prático
 
 ![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
 
-Projeto desenvolvido para a disciplina de **Construção de Compiladores (Opção 2)**. 
+Projeto desenvolvido para a disciplina de **Compiladores**. 
 
 O sistema implementa uma **Tabela de Símbolos** eficiente para gerenciar **escopos aninhados** (*nested scopes*) utilizando uma estrutura de **Pilha (Stack)** preenchida por **Hash Maps** (dicionários do Python). Cada escopo ativo funciona como um mapa local isolado, permitindo a resolução de nomes de variáveis da maneira exata que um compilador real faz.
 
 ---
 
 ##  Métodos Implementados
-
-De acordo com as especificações do enunciado, o núcleo do sistema expõe:
 * `declarar(variavel, tipo)`: Registra uma nova variável com seu tipo correspondente no escopo atual (topo da pilha).
 * `buscar(variavel)`: Procura por uma variável realizando uma busca linear de cima para baixo na pilha (do escopo mais interno/recente até o escopo global).
 
