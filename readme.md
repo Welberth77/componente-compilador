@@ -22,11 +22,12 @@ O desenvolvimento foi feito de forma modular e distribuído entre a equipe:
 
 ```text
 gerenciador-tabela-simbolos/
-├── erros.py                # Exceções personalizadas para erros semânticos
-├── escopo.py               # Classe Escopo (Encapsula 1 Hash Map)
-├── tabela_de_simbolos.py   # Gerenciamento da Pilha de escopos e métodos de busca
-├── main.py                 # Rotina de disposição e cenários de teste
-└── README.md               # Documentação principal do projeto
+├── erros.py                    # Exceções personalizadas para erros semânticos
+├── escopo.py                   # Classe Escopo (Encapsula 1 Hash Map)
+├── tabela_de_simbolos.py       # Gerenciamento da Pilha de escopos e métodos de busca
+├── main.py                     # Rotina de disposição e cenários de teste
+├── Relatorio Compiladores.pdf  # Relatório completo
+└── README.md                   # Documentação principal do projeto
 ```
 
 ### Divisão de Responsabilidades
