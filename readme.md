@@ -35,9 +35,9 @@ gerenciador-tabela-simbolos/
 
 | Módulo | Responsabilidade | Estrutura de Dados | Integrante |
 | :--- | :--- | :--- | :--- |
-| `erros.py` / `escopo.py` | Definição de exceções e escopo individual | **Hash Map** (Dicionário) | Welbert Costa |
-| `tabela_de_simbolos.py` | Empilhamento/desempilhamento e resolução | **Pilha (Stack)** de escopos | Igor Rafael |
-| `main.py` / Docs | Criação dos cenários de teste e relatórios | — | Danilo Lima |
+| `erros.py` / `escopo.py` | Definição de exceções e escopo individual | **Hash Map** (Dicionário) | Welberth Costa |
+| `tabela_de_simbolos.py` / `main.py` | Empilhamento/desempilhamento e resolução | **Pilha (Stack)** de escopos | Igor Rafael |
+| Docs | Criação dos cenários de teste e relatórios | — | Danilo Lima |
 
 ---
 
