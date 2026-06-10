@@ -106,6 +106,6 @@ print(tabela.buscar("i"))  # Saída: None
 
 ## 👥 Autores
 
-* **Welbert de Oliveira Costa** — Desenvolvimento das estruturas base (`escopo.py` e `erros.py`).
-* **Igor Rafael Basilio de Lima** — Desenvolvimento do motor da tabela (`tabela_de_simbolos.py`).
-* **Danilo Vitor Firmino Lima** — Casos de teste, validação e documentação (`main.py` e relatórios).
+* **Welberth de Oliveira Costa** — Desenvolvimento das estruturas base (`escopo.py`, `erros.py` e relatório).
+* **Igor Rafael Basilio de Lima** — Desenvolvimento do motor da tabela (`tabela_de_simbolos.py`, `main.py` e relatório).
+* **Danilo Vitor Firmino Lima** — Casos de teste, validação e documentação (readme e relatório).
