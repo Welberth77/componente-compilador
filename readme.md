@@ -28,8 +28,7 @@ gerenciador-tabela-simbolos/
 ├── escopo.py               # Classe Escopo (Encapsula 1 Hash Map)
 ├── tabela_de_simbolos.py   # Gerenciamento da Pilha de escopos e métodos de busca
 ├── main.py                 # Rotina de disposição e cenários de teste
-├── README.md               # Documentação principal do projeto
-└── Relatorio_Tecnico.pdf   # Relatório de fundamentação teórica
+└── README.md               # Documentação principal do projeto
 ```
 
 ### Divisão de Responsabilidades
